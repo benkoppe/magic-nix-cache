@@ -24,7 +24,7 @@ jobs:
             runner: ubuntu-24.04-arm
           - nix-system: aarch64-darwin
             system: ARM64-macOS
-            runner: macos-latest-xlarge
+            runner: macos-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install Nix on ${{ matrix.systems.system }}

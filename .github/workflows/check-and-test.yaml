@@ -55,7 +55,7 @@ jobs:
           - system: ARM64-Linux
             runner: ubuntu-24.04-arm
           - system: ARM64-macOS
-            runner: macos-latest-xlarge
+            runner: macos-latest
     permissions:
       contents: read
       id-token: write
