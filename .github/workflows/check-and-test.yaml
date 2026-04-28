@@ -50,7 +50,7 @@ jobs:
           - system: X64-Linux
             runner: ubuntu-22.04
           - system: ARM64-Linux
-            runner: namespace-profile-default-arm64
+            runner: ubuntu-24.04-arm
           - system: ARM64-macOS
             runner: macos-latest-xlarge
     permissions:

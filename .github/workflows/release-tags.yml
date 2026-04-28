@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # In order to upload artifacts to GitHub releases
-      id-token: write # In order to request a JWT for AWS auth
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,14 +43,6 @@ jobs:
           path: cache-binary-ARM64-Linux
       - name: Persist the cache binary
         run: cp ./cache-binary-ARM64-Linux/magic-nix-cache.closure.xz ./artifacts/ARM64-Linux
-
-      - uses: DeterminateSystems/push-artifact-ids@main
-        with:
-          s3_upload_role: ${{ secrets.AWS_S3_UPLOAD_ROLE }}
-          bucket: ${{ secrets.AWS_S3_UPLOAD_BUCKET }}
-          directory: ./artifacts
-          ids_project_name: magic-nix-cache
-          ids_binary_prefix: magic-nix-cache
 
       - name: Rename binaries for GH release
         run: |
