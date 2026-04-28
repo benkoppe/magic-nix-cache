@@ -1,9 +1,12 @@
 name: Release Tags
 
 on:
-  push:
-    tags:
-      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to create"
+        required: true
+        type: string
 
 jobs:
   build:
@@ -53,6 +56,8 @@ jobs:
       - name: Publish Release to GitHub (Tag)
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ inputs.tag }}
+          target_commitish: ${{ github.sha }}
           fail_on_unmatched_files: true
           draft: true
           files: |
